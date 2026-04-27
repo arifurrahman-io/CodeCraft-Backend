@@ -35,7 +35,7 @@ export const getBlogBySlug = asyncHandler(async (req, res) => {
   const blog = await Blog.findOneAndUpdate(
     { slug: req.params.slug, isPublished: true },
     { $inc: { views: 1 } },
-    { new: true }
+    { returnDocument: "after" },
   ).populate("author", "name email avatar role");
 
   if (!blog) throw new ApiError(404, "Blog not found");
@@ -45,7 +45,9 @@ export const getBlogBySlug = asyncHandler(async (req, res) => {
 
 export const createBlog = asyncHandler(async (req, res) => {
   const slug = await createUniqueSlug(Blog, req.body.title);
-  const blog = await Blog.create(withPublishDate({ ...req.body, slug, author: req.user._id }));
+  const blog = await Blog.create(
+    withPublishDate({ ...req.body, slug, author: req.user._id }),
+  );
 
   return sendResponse(res, 201, "Blog created successfully", { blog });
 });
@@ -60,7 +62,7 @@ export const updateBlog = asyncHandler(async (req, res) => {
 
   const blog = await Blog.findByIdAndUpdate(req.params.id, data, {
     new: true,
-    runValidators: true
+    runValidators: true,
   }).populate("author", "name email avatar role");
 
   if (!blog) throw new ApiError(404, "Blog not found");
