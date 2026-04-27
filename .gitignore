@@ -1,0 +1,57 @@
+# =========================
+# ROOT / GLOBAL
+# =========================
+node_modules/
+dist/
+build/
+coverage/
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# ENV FILES (IMPORTANT)
+# =========================
+.env
+.env.local
+.env.example
+.env.development.local
+.env.test.local
+.env.production.local
+
+
+# =========================
+# BACKEND (Node / Express)
+# =========================
+node_modules/
+uploads/*
+uploads/.gitkeep
+
+.env
+.env.local
+
+# Runtime temp files
+tmp/
+temp/
+
+# Nodemon logs
+nodemon-debug.log
+
+# =========================
+# OPTIONAL
+# =========================
+*.zip
+*.rar
+*.7z
