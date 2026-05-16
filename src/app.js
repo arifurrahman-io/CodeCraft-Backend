@@ -14,12 +14,20 @@ import testimonialRoutes from "./routes/testimonial.routes.js";
 import contactRoutes from "./routes/contact.routes.js";
 import settingsRoutes from "./routes/settings.routes.js";
 import uploadRoutes from "./routes/upload.routes.js";
+import cvSubmissionRoutes from "./routes/cvSubmission.routes.js";
 
 const app = express();
 
 app.use(
   cors({
-    origin: env.clientUrl,
+    origin(origin, callback) {
+      if (!origin || env.corsOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      callback(null, false);
+    },
     credentials: true
   })
 );
@@ -52,6 +60,7 @@ app.use("/api/v1/testimonials", testimonialRoutes);
 app.use("/api/v1/contacts", contactRoutes);
 app.use("/api/v1/settings", settingsRoutes);
 app.use("/api/v1/upload", uploadRoutes);
+app.use("/api/v1/cv-submissions", cvSubmissionRoutes);
 
 app.use((req, _res, next) => {
   next(new ApiError(404, `Route not found: ${req.originalUrl}`));

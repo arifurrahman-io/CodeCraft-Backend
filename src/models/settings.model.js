@@ -14,11 +14,13 @@ const settingsSchema = new mongoose.Schema(
     },
     logo: {
       type: String,
-      default: ""
+      default: "",
+      trim: true
     },
     favicon: {
       type: String,
-      default: ""
+      default: "",
+      trim: true
     },
     email: {
       type: String,
@@ -34,6 +36,11 @@ const settingsSchema = new mongoose.Schema(
     address: {
       type: String,
       default: ""
+    },
+    website: {
+      type: String,
+      default: "",
+      trim: true
     },
     facebook: {
       type: String,
@@ -70,6 +77,73 @@ const settingsSchema = new mongoose.Schema(
     seoDescription: {
       type: String,
       default: ""
+    },
+    keywords: {
+      type: String,
+      default: "",
+      trim: true
+    },
+    ogImage: {
+      type: String,
+      default: "",
+      trim: true
+    },
+    primaryColor: {
+      type: String,
+      default: "#06b6d4",
+      trim: true
+    },
+    secondaryColor: {
+      type: String,
+      default: "#1e293b",
+      trim: true
+    },
+    accentColor: {
+      type: String,
+      default: "#8b5cf6",
+      trim: true
+    },
+    statistics: {
+      yearsExperience: {
+        type: String,
+        default: "",
+        trim: true
+      },
+      businessStartYear: {
+        type: String,
+        default: "2019",
+        trim: true
+      },
+      projectsCompleted: {
+        type: String,
+        default: "",
+        trim: true
+      },
+      happyClients: {
+        type: String,
+        default: "",
+        trim: true
+      },
+      industriesServed: {
+        type: String,
+        default: "",
+        trim: true
+      },
+      expertsTeam: {
+        type: String,
+        default: "",
+        trim: true
+      },
+      projectSuccess: {
+        type: String,
+        default: "100%",
+        trim: true
+      },
+      supportAvailability: {
+        type: String,
+        default: "24/7",
+        trim: true
+      }
     }
   },
   { timestamps: true }

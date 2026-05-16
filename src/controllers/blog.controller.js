@@ -32,11 +32,15 @@ export const getBlogs = asyncHandler(async (req, res) => {
 });
 
 export const getBlogBySlug = asyncHandler(async (req, res) => {
-  const blog = await Blog.findOneAndUpdate(
-    { slug: req.params.slug, isPublished: true },
-    { $inc: { views: 1 } },
-    { returnDocument: "after" },
-  ).populate("author", "name email avatar role");
+  const query = { slug: req.params.slug, isPublished: true };
+  const blog =
+    req.query.preview === "1"
+      ? await Blog.findOne(query).populate("author", "name email avatar role")
+      : await Blog.findOneAndUpdate(
+          query,
+          { $inc: { views: 1 } },
+          { returnDocument: "after" },
+        ).populate("author", "name email avatar role");
 
   if (!blog) throw new ApiError(404, "Blog not found");
 
