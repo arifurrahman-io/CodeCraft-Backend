@@ -15,7 +15,7 @@ const manage = [protect, authorize("admin", "editor")];
 
 router.get("/", getTeamMembers);
 router.post("/", manage, validate(teamValidation), createTeamMember);
-router.put("/:id", manage, updateTeamMember);
+router.put("/:id", manage, validate(teamValidation), updateTeamMember);
 router.delete("/:id", manage, deleteTeamMember);
 
 export default router;

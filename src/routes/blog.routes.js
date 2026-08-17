@@ -17,7 +17,7 @@ const manage = [protect, authorize("admin", "editor")];
 router.get("/", getBlogs);
 router.get("/:slug", getBlogBySlug);
 router.post("/", manage, validate(blogValidation), createBlog);
-router.put("/:id", manage, updateBlog);
+router.put("/:id", manage, validate(blogValidation), updateBlog);
 router.delete("/:id", manage, deleteBlog);
 
 export default router;

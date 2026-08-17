@@ -17,7 +17,7 @@ const manage = [protect, authorize("admin", "editor")];
 router.get("/", getProjects);
 router.get("/:slug", getProjectBySlug);
 router.post("/", manage, validate(projectValidation), createProject);
-router.put("/:id", manage, updateProject);
+router.put("/:id", manage, validate(projectValidation), updateProject);
 router.delete("/:id", manage, deleteProject);
 
 export default router;

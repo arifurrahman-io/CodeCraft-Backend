@@ -29,7 +29,7 @@ export const login = asyncHandler(async (req, res) => {
 
   const safeUser = user.toJSON();
   delete safeUser.password;
-  return sendResponse(res, 200, "Login successful", { token, user: safeUser });
+  return sendResponse(res, 200, "Login successful", { user: safeUser });
 });
 
 export const getMe = asyncHandler(async (req, res) => {

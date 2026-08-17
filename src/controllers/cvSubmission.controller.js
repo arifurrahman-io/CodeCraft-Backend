@@ -35,3 +35,22 @@ export const getCvSubmissionById = asyncHandler(async (req, res) => {
     submission
   });
 });
+
+export const updateCvSubmissionStatus = asyncHandler(async (req, res) => {
+  ensureObjectId(req.params.id);
+
+  const { status, notes } = req.body;
+  const submission = await CvSubmission.findById(req.params.id);
+  if (!submission) throw new ApiError(404, "CV submission not found");
+
+  submission.status = status;
+  if (notes !== undefined) {
+    submission.adminNotes = String(notes || "").trim();
+  }
+
+  await submission.save();
+
+  return sendResponse(res, 200, "CV submission status updated successfully", {
+    submission
+  });
+});

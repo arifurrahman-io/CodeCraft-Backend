@@ -232,6 +232,12 @@ const cvSubmissionSchema = new mongoose.Schema(
       type: String,
       enum: ["new", "reviewing", "shortlisted", "rejected"],
       default: "new"
+    },
+    adminNotes: {
+      type: String,
+      default: "",
+      trim: true,
+      maxlength: [2000, "Admin notes cannot exceed 2000 characters"]
     }
   },
   { timestamps: true }

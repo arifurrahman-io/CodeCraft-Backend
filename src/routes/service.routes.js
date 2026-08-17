@@ -17,7 +17,7 @@ const manage = [protect, authorize("admin", "editor")];
 router.get("/", getServices);
 router.get("/:slug", getServiceBySlug);
 router.post("/", manage, validate(serviceValidation), createService);
-router.put("/:id", manage, updateService);
+router.put("/:id", manage, validate(serviceValidation), updateService);
 router.delete("/:id", manage, deleteService);
 
 export default router;

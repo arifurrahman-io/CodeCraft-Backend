@@ -15,7 +15,7 @@ const manage = [protect, authorize("admin", "editor")];
 
 router.get("/", getTestimonials);
 router.post("/", manage, validate(testimonialValidation), createTestimonial);
-router.put("/:id", manage, updateTestimonial);
+router.put("/:id", manage, validate(testimonialValidation), updateTestimonial);
 router.delete("/:id", manage, deleteTestimonial);
 
 export default router;

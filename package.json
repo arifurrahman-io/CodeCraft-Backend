@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
-    "seed:admin": "node src/seed/admin.seed.js"
+    "seed:admin": "node src/seed/admin.seed.js",
+    "seed:demo-projects": "node src/seed/demoProjects.seed.js",
+    "seed:services": "node src/seed/services.seed.js",
+    "seed:testimonials": "node src/seed/testimonials.seed.js",
+    "seed:blogs": "node src/seed/blogs.seed.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +23,8 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.3.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.5.0",
     "multer": "^2.1.1"
